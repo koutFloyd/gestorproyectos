@@ -1,0 +1,55 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Proyectos</h1>
+<div class="container">
+<nav class="navbar navbar-light bg-light">
+      <form class="form-inline">
+      Proyecto
+      <input class="form-control me-2" type="search" placeholder="Ingrese un nombre" aria-label="Nombre" name="name">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
+
+<%if @proyectos.count > 0 %>
+<h1>Resultados para el proyecto: <%=params[:name]%></h1>
+<div id="proyectos">
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Fecha i</th>
+      <th>Fecha t</th>
+      <th>Estado</th>
+      <th>Ver Datos</th>
+    </tr>
+  </thead>
+
+
+    <% @proyectos.each do |proyecto| %>
+      <tr>
+        <td><%= proyecto.name %></td>
+        <td><%= proyecto.desc %></td>
+        <td><%= proyecto.fecha_i %></td>
+        <td><%= proyecto.fecha_t %></td>
+        <td><%= proyecto.estado %></td>
+        <td><%= link_to "Ver proyecto", proyecto %></td>
+      </tr>
+    <% end %>
+
+  </table>
+</div>
+<br><br>
+<%=paginate(@proyectos)%>
+<br><br>
+
+<%else%>
+<h1>No hay resultados para la búsqueda <%=params[:name] %></h1>
+<%end%>
+
+
+<%= link_to "Nuevo proyecto", new_proyecto_path %>
+
+</div>
+
