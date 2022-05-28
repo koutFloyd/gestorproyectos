@@ -23,5 +23,8 @@
     <strong>Estado:</strong>
     <%= proyecto.estado %>
   </p>
-
+  <p>
+    <label for="estado">Estado</label>
+    <%=select_tag(:estado, options_for_select([['Propuesto',1],['En Progreso',2],['Terminado',3]]))%>
+  </p>
 </div>

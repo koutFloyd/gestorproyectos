@@ -3,10 +3,13 @@ class ProyectosController < ApplicationController
 
   # GET /proyectos or /proyectos.json
   def index
-    if params[:name].present?
-      @proyectos = Proyecto.where("name like ?", "%" + params[:name] + "%").page(params[:page]).per(10)
+
+    if params[:search].present?
+      #@proyectos = Proyecto.where("name like ?", "%" + params[:name] + "%").page(params[:page]).per(10)
+      @proyectos = Proyecto.where("estado =?", params[:search]).page(params[:page]).per(10)
     else
       @proyectos = Proyecto.all.page(params[:page]).per(10)
+      #@proyectos = Proyecto.all
     end
   end
 

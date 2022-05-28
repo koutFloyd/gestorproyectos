@@ -5,22 +5,27 @@
 <nav class="navbar navbar-light bg-light">
       <form class="form-inline">
       Proyecto
-      <input class="form-control me-2" type="search" placeholder="Ingrese un nombre" aria-label="Nombre" name="name">
+      <select class="form-select" name="search" id="">
+        <option value="">Todos</option>
+        <option value="Propuesto">Propuesto</option>
+        <option value="En Progreso">En Progreso</option>
+        <option value="Terminado">Terminado</option>
+      </select>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
   </div>
 </nav>
 
-<%if @proyectos.count > 0 %>
-<h1>Resultados para el proyecto: <%=params[:name]%></h1>
+<% if @proyectos.count > 0 %>
+<h1>Resultados para el proyecto: <%=params[:search]%></h1>
 <div id="proyectos">
 <table class="table table-dark table-striped">
   <thead>
     <tr>
       <th>Nombre</th>
       <th>Descripción</th>
-      <th>Fecha i</th>
-      <th>Fecha t</th>
+      <th>Fecha Comienzo</th>
+      <th>Fecha Téermino</th>
       <th>Estado</th>
       <th>Ver Datos</th>
     </tr>
@@ -45,7 +50,7 @@
 <br><br>
 
 <%else%>
-<h1>No hay resultados para la búsqueda <%=params[:name] %></h1>
+<h1>No hay resultados para la búsqueda <%=params[:search] %></h1>
 <%end%>
 
 

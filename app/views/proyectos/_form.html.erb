@@ -30,12 +30,19 @@
     <%= form.label :fecha_t, style: "display: block" %>
     <%= form.text_field :fecha_t %>
   </div>
-
+<!--
   <div>
     <%= form.label :estado, style: "display: block" %>
     <%= form.text_field :estado %>
   </div>
-
+-->
+  <div>
+    <%= form.label :estado, style: "display: block" %>
+    <%select_list = ['Propuesto', 'En Progreso', 'Terminado']%>
+    <%= form.select :estado, select_list, selected: 'Propuesto'%>
+    <!--%=select_tag(:estado, options_for_select([['Propuesto',1],['En Progreso',2],['Terminado',3]]))%-->
+  </div>
+<br>
   <div>
     <%= form.submit %>
   </div>
